@@ -27,30 +27,80 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        AsignarTurnosBtn = new javax.swing.JButton();
+        verTurnosBtn = new javax.swing.JButton();
+        verTurnosBtn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Holis");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Menu Principal");
+
+        AsignarTurnosBtn.setText("Asignar Turnos");
+        AsignarTurnosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsignarTurnosBtnActionPerformed(evt);
+            }
+        });
+
+        verTurnosBtn.setText("Ver y editar turnos");
+        verTurnosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verTurnosBtnActionPerformed(evt);
+            }
+        });
+
+        verTurnosBtn1.setText("Consultar datos");
+        verTurnosBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verTurnosBtn1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel1)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(AsignarTurnosBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(verTurnosBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(verTurnosBtn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(AsignarTurnosBtn)
+                .addGap(18, 18, 18)
+                .addComponent(verTurnosBtn)
+                .addGap(18, 18, 18)
+                .addComponent(verTurnosBtn1)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AsignarTurnosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarTurnosBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AsignarTurnosBtnActionPerformed
+
+    private void verTurnosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTurnosBtnActionPerformed
+        this.setVisible(false);
+        resumenGuardias pantalla = new resumenGuardias();
+        pantalla.setVisible(true);
+    }//GEN-LAST:event_verTurnosBtnActionPerformed
+
+    private void verTurnosBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTurnosBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verTurnosBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +138,9 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AsignarTurnosBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton verTurnosBtn;
+    private javax.swing.JButton verTurnosBtn1;
     // End of variables declaration//GEN-END:variables
 }
