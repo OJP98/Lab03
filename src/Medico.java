@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /**
  * @Author: Oscar Juarez y Rodrigo Zea
  * @Version: 22.09.17
@@ -17,6 +20,8 @@ public class Medico extends Trabajador{
         this.colegiado = colegiado;
         
     }
+    
+    public Medico(){}
 
     public boolean isEspecialista() {
         return especialista;
@@ -38,8 +43,24 @@ public class Medico extends Trabajador{
             
         } else {
             salario += this.salario;
-        }
-        
+        }        
     }
     
+    @Override
+    public String imprimirDatos(Trabajador[][] matriz, int mes, int dia){
+        
+        String Especialista;
+        
+        if (especialista){
+            Especialista = "Si";
+        } else {
+            Especialista = "No";
+        }
+        
+        return super.imprimirDatos(matriz, mes, dia) + "Especialista: " + Especialista + "\n" + "Colegiado: " + colegiado;
+        
+    }
+        
+
+        
 }
