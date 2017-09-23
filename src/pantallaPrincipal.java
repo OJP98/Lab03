@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * @Author: Oscar Juarez y Rodrigo Zea
@@ -12,15 +13,15 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
     Calculos calculos = new Calculos();
     public static boolean variableControl;
-    public static Trabajador[][] matrizPantalla;
-    //public static Enfermera[][] matrizPantallaE;
+    public static Medico[][] matrizPantallaM;
+    public static Enfermera[][] matrizPantallaE;
     resumenGuardias pantallaResumen = new resumenGuardias();
-    public static ArrayList<Trabajador> listaPantalla = new ArrayList<Trabajador>();
+    public static ArrayList<Medico> listaPantallaM = new ArrayList<Medico>();
+    public static ArrayList<Enfermera> listaPantallaE = new ArrayList<Enfermera>();
     
     public pantallaPrincipal() {
         initComponents();
         variableControl = true;
-        //[][] matrizPantalla;
     }
 
     /**
@@ -100,7 +101,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AsignarTurnosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarTurnosBtnActionPerformed
-        
+        calculos.asignarTurnos(matrizPantallaM, matrizPantallaE, listaPantallaM, listaPantallaE);
+        JOptionPane.showMessageDialog(this, "Turnos generados con exito!");
     }//GEN-LAST:event_AsignarTurnosBtnActionPerformed
 
     private void verTurnosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTurnosBtnActionPerformed
@@ -114,39 +116,44 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_verTurnosBtn1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-                
-        matrizPantalla = new Trabajador[12][31];
-        //matrizPantallaE = new Enfermera[12][31];
+           
+        if (variableControl) {
+            
+            matrizPantallaM = new Medico[12][31];
+            matrizPantallaE = new Enfermera[12][31];
+
+            Medico medico1 = new Medico("Juan Perez", "1234567870101" ,"6799652-3", 15000, 0, true, "89098");
+            Medico medico2 = new Medico("Luis Gutierrez", " 9876543260101" ," 8964547-3", 12000, 0, false, "98554");
+            Medico medico3 = new Medico("Eduardo Gonzalez", "5642871750101" ," 8786456-6", 17000, 0, true, "5653");
+            Medico medico4 = new Medico("Guadalupe Torres", "4562973920101" ,"5684873-1", 17000, 0, true, "10098");
+            Medico medico5 = new Medico("Maria Castillo", "569395290101" ,"8765485-7", 13000, 0, false, "67965");
+
+            Enfermera enfermera1 = new Enfermera("Juana Lopez", "5643213450101", " 563269-K", 6000, 0, false, 2);
+            Enfermera enfermera2 = new Enfermera("Lidia Mendez", "1246547850101", "7654376-6", 9000, 0, true, 2);
+            Enfermera enfermera3 = new Enfermera("Miriam Garcia", "6547854370101", "9876456-8", 8000, 0, false, 14);
+            Enfermera enfermera4 = new Enfermera("Lorna Suarez", "569374160101", "4567865-8", 10000, 0, true, 12);
+            Enfermera enfermera5 = new Enfermera("Mariela Rodriguez", "3254786540101", "6789654-8", 8000, 0, false, 2);
+
+            listaPantallaM.add(medico1);
+            listaPantallaM.add(medico2);
+            listaPantallaM.add(medico3);
+            listaPantallaM.add(medico4);
+            listaPantallaM.add(medico5);
+
+            listaPantallaE.add(enfermera1);        
+            listaPantallaE.add(enfermera2);
+            listaPantallaE.add(enfermera3);
+            listaPantallaE.add(enfermera4);
+            listaPantallaE.add(enfermera5);
+            
+            variableControl = false;
+        }
         
-        
-        Medico medico1 = new Medico("Juan Perez", "1234567870101" ,"6799652-3", 15000, 0, true, "89098");
-        Medico medico2 = new Medico("Luis Gutierrez", " 9876543260101" ," 8964547-3", 12000, 0, false, "98554");
-        Medico medico3 = new Medico("Eduardo González", "5642871750101" ," 8786456-6", 17000, 0, true, "5653");
-        Medico medico4 = new Medico("Guadalupe Torres", "4562973920101" ,"5684873-1", 17000, 0, true, "10098");
-        Medico medico5 = new Medico("Maria Castillo", "569395290101" ,"8765485-7", 13000, 0, false, "67965");
-        
-        Enfermera enfermera1 = new Enfermera("Juana Lopez", "5643213450101", " 563269-K", 6000, 0, false, 2);
-        Enfermera enfermera2 = new Enfermera("Lidia Mendez", "1246547850101", "7654376-6", 9000, 0, true, 2);
-        Enfermera enfermera3 = new Enfermera("Miriam Garcia", "6547854370101", "9876456-8", 8000, 0, false, 14);
-        Enfermera enfermera4 = new Enfermera("Lorna Suarez", "569374160101", "4567865-8", 10000, 0, true, 12);
-        Enfermera enfermera5 = new Enfermera("Mariela Rodriguez", "3254786540101", "6789654-8", 8000, 0, false, 2);
-        
-        listaPantalla.add(medico1);
-        listaPantalla.add(medico2);
-        listaPantalla.add(medico3);
-        listaPantalla.add(medico4);
-        listaPantalla.add(medico5);
-        listaPantalla.add(enfermera1);
-        
-        listaPantalla.add(enfermera2);
-        listaPantalla.add(enfermera3);
-        listaPantalla.add(enfermera4);
-        listaPantalla.add(enfermera5);
-        
-        calculos.asignarTurnos(matrizPantalla, listaPantalla);
-        
-        pantallaResumen.listaGuardia = listaPantalla;
-        pantallaResumen.matrizGuardia = matrizPantalla;
+        pantallaResumen.listaGuardiaM = listaPantallaM;
+        pantallaResumen.listaGuardiaE = listaPantallaE;
+        pantallaResumen.matrizGuardiaM = matrizPantallaM;
+        pantallaResumen.matrizGuardiaE = matrizPantallaE;
+        pantallaResumen.controlGuardia = variableControl;
     }//GEN-LAST:event_formWindowOpened
 
     /**

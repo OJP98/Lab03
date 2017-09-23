@@ -46,18 +46,17 @@ public class Medico extends Trabajador{
         }        
     }
     
-    @Override
-    public String imprimirDatos(Trabajador[][] matriz, int mes, int dia){
+    public String imprimirDatosM(Medico[][] matriz, int mes, int dia){
         
         String Especialista;
         
-        if (especialista){
+        if (matriz[mes][dia].isEspecialista()){
             Especialista = "Si";
         } else {
             Especialista = "No";
         }
         
-        return super.imprimirDatos(matriz, mes, dia) + "Especialista: " + Especialista + "\n" + "Colegiado: " + colegiado;
+        return super.imprimirDatos(matriz, mes, dia) + "Especialista: " + Especialista + "\n" + "Colegiado: " + matriz[mes][dia].getColegiado();
         
     }
         

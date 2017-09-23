@@ -15,6 +15,8 @@ public class Enfermera extends Trabajador {
         this.intensivista = intensivista;
         this.tiempoTrabajando = tiempoTrabajando;
     }
+    
+    public Enfermera(){}
 
     public boolean isIntensivista() {
         return intensivista;
@@ -42,18 +44,17 @@ public class Enfermera extends Trabajador {
         
     }
     
-    @Override
-    public String imprimirDatos(Trabajador[][] matriz, int mes, int dia){
+    public String imprimirDatosE(Enfermera[][] matriz, int mes, int dia){
 
         String SioNo;
         
-        if (intensivista==true) {
+        if (matriz[mes][dia].isIntensivista()) {
             SioNo = "Si";
         } else {
             SioNo = "No";
         }
         
-        return super.imprimirDatos(matriz, mes, dia) + "Especialista: " + SioNo + "\n";
+        return super.imprimirDatos(matriz, mes, dia) + "Intensivista: " + SioNo + "\n";
         
     }
     
