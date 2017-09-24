@@ -12,10 +12,11 @@ import java.util.ArrayList;
  * @author MIGUEL
  */
 public class informacionTrabajadores extends javax.swing.JFrame {
-    Medico[][] matrizMe;
-    Enfermera[][] matrizEn;
-    ArrayList<Medico> listaGuardiaM = new ArrayList<Medico>();
-    ArrayList<Enfermera> listaGuardiaE = new ArrayList<Enfermera>();
+    public static boolean controlT;
+    public static Medico[][] matrizMe;
+    public static Enfermera[][] matrizEn;
+    public static ArrayList<Medico> listaGuardiaM = new ArrayList<Medico>();
+    public static ArrayList<Enfermera> listaGuardiaE = new ArrayList<Enfermera>();
     Calculos calc = new Calculos();
     String nombreIM;
     int turnosIM;
@@ -73,7 +74,7 @@ public class informacionTrabajadores extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Ver informacion de trabajadores");
+        jLabel2.setText("Ver informacion de trabajadores (Anualmente)");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Enfermera intensivista que mas turnos trabajo:");
@@ -93,9 +94,9 @@ public class informacionTrabajadores extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Seleccione el nombre de la enfermera:");
 
-        medicosBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juan Perez", "Luis Gutierrez", "Eduardo Gonzalez", "Guadalupe Torres", "Maria Castillo" }));
+        medicosBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juan Perez", "Guadalupe Torres"}));
 
-        enfermerasBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juana Lopez", "Lidia Mendez", "Miriam Garcia", "Lorna Suarez", "Mariela Rodriguez" }));
+        enfermerasBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lidia Mendez", "Lorna Suarez" }));
 
         conDatosBtn.setText("Consultar Datos");
         conDatosBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -104,16 +105,22 @@ public class informacionTrabajadores extends javax.swing.JFrame {
             }
         });
 
+        parejasTA.setEditable(false);
         parejasTA.setColumns(20);
         parejasTA.setRows(5);
         jScrollPane1.setViewportView(parejasTA);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Total a pagar por guardias adicionales:");
+        jLabel8.setText("Total adicional a pagar por turnos de guardia:");
 
         adicionalLbl.setText("Q");
 
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         nomLbl.setText("Nombre");
 
@@ -132,45 +139,51 @@ public class informacionTrabajadores extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(conDatosBtn)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(extLbl))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(nomLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(34, 34, 34)
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(trnLbl))
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(extLbl))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nomLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(trnLbl))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(conDatosBtn)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addGap(31, 31, 31)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(medicosBtn, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(enfermerasBtn, 0, 167, Short.MAX_VALUE)))
-                                .addComponent(jLabel8)
-                                .addComponent(adicionalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(47, 47, 47)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addComponent(jLabel7)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel6)
+                                                    .addGap(31, 31, 31)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(medicosBtn, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(enfermerasBtn, 0, 167, Short.MAX_VALUE)))))
+                                .addGap(35, 35, 35)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(148, 148, 148))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(adicionalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +202,7 @@ public class informacionTrabajadores extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(extLbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -204,11 +217,11 @@ public class informacionTrabajadores extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(conDatosBtn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adicionalLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(jButton2)
                 .addGap(29, 29, 29))
         );
@@ -217,7 +230,10 @@ public class informacionTrabajadores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void conDatosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conDatosBtnActionPerformed
-        // TODO add your handling code here:
+        int contar;
+        
+        contar = calc.contarVeces(matrizMe, matrizEn, (String) medicosBtn.getSelectedItem(), (String) enfermerasBtn.getSelectedItem());
+        parejasTA.setText("El numero de veces que esta" + "\npareja ha trabajado es de: \n\n" + String.valueOf(contar) + " veces");
     }//GEN-LAST:event_conDatosBtnActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -226,8 +242,21 @@ public class informacionTrabajadores extends javax.swing.JFrame {
         calculoIntensivista();
         adicional();
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        pantallaPrincipal pantalla = new pantallaPrincipal();
+        this.setVisible(false);
+        pantalla.setVisible(true);
+        
+        pantalla.listaPantallaM = listaGuardiaM;
+        pantalla.listaPantallaE = listaGuardiaE;
+        pantalla.matrizPantallaM = matrizMe;
+        pantalla.matrizPantallaE = matrizEn;
+        pantalla.variableControl = controlT;
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     public void calculoIntensivista(){
+        
         turnosIM = calc.intensivistaMasTurnos(matrizEn, listaGuardiaE);
         nombreIM = calc.nombreIntensivista(listaGuardiaE, turnosIM);
         salarioIM = calc.SalarioIntensivista(listaGuardiaE, turnosIM);
@@ -236,8 +265,7 @@ public class informacionTrabajadores extends javax.swing.JFrame {
         nomLbl.setText(nombreIM);
         trnLbl.setText(turnosIM+"");
         extLbl.setText("Q"+totalIM+"");
-       
-        
+               
     }
     
     public void adicional(){

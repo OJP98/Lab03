@@ -1,7 +1,9 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -76,36 +78,48 @@ public class Calculos {
     }
     
     public int intensivistaMasTurnos(Enfermera[][] matrizE, ArrayList<Enfermera> listaE){
-        int[] turnosE = new int[2];
         
-        /*for (int i = 0; i < matrizE.length; i++) {
-            for (int j = 0; j < matrizE[0].length; j++) {
-                if(matrizE[i][j].isIntensivista()){
-                    turnosE[i] = matrizE[i][j].getTurnos();
-                }
-            }
-        }*/
-        
-        for (int i = 0; i < listaE.size(); i++) {
-            for (int j = 0; j < turnosE.length; j++) {
-              if(listaE.get(i).isIntensivista()){
-                turnosE[j] = listaE.get(i).getTurnos();
-                }  
+        ArrayList<Integer> turnosE = new ArrayList<Integer>();
+                        
+        /*for (int i = 0; i < listaE.size(); i++) {
+                
+            if((listaE.get(i).isIntensivista()==true) && (turnosE[0]==0)){
+                
+                    turnosE[0] = listaE.get(i).getTurnos();
+                                  
+            } else  {                
+                turnosE[1] = listaE.get(i).getTurnos();
             }
             
         }
         
         Arrays.sort(turnosE);
-        int valorM = turnosE[0];
+        int valorM = turnosE[1];
+        
+        for (int i = 0; i < turnosE.length; i++) {
+            System.out.println(turnosE[i]);
+        }*/
+        
+        
+        int valorM = 0;
+        
+        for(Enfermera x: listaE){            
+            if(x.isIntensivista()) {                
+                turnosE.add(x.getTurnos());                
+            }           
+        }
+        
+        valorM = Collections.max(turnosE);
         
         return valorM;
     }
     
     public String nombreIntensivista(ArrayList<Enfermera> listaE, int valorM){
+        
         String nombre="";
         
         for (int k = 0; k < listaE.size(); k++) {
-            if(listaE.get(k).getTurnos() == valorM && listaE.get(k).isIntensivista()){
+            if((listaE.get(k).getTurnos() == valorM) && (listaE.get(k).isIntensivista()==true)){
                 nombre = listaE.get(k).getNombre();
             }
         }
@@ -155,6 +169,30 @@ public class Calculos {
         
         return devengado;
     }
+    
+    public int contarVeces(Medico[][] matrizM, Enfermera[][] matrizE, String especialista, String intensivista) {
+        
+        String nombre1;
+        String nombre2;
+        int contador = 0;
+        
+        for (int i = 0; i < matrizM.length; i++) {
+            for (int j = 0; j < matrizM[0].length; j++) {
+                
+                nombre1 = matrizM[i][j].getNombre();
+                nombre2 = matrizE[i][j].getNombre();
+                
+                if( (nombre1.equals(especialista)) && (nombre2.equals(intensivista)) ) {
+                    contador++;
+                }                
+            }
+        }
+
+        return contador;
+        
+    }
+    
+    
     
 }
     

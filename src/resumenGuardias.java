@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * @Author: Oscar Juarez y Rodrigo Zea
@@ -69,7 +70,6 @@ public class resumenGuardias extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        editarBtn = new javax.swing.JButton();
         enfermerasBtn = new javax.swing.JComboBox<>();
         medicosBtn = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
@@ -77,7 +77,6 @@ public class resumenGuardias extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         fechaLbl = new javax.swing.JLabel();
         actualizarBtn = new javax.swing.JButton();
-        cancelarBtn = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -335,8 +334,6 @@ public class resumenGuardias extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Enfermeras:");
 
-        editarBtn.setText("Editar");
-
         enfermerasBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juana Lopez", "Lidia Mendez", "Miriam Garcia", "Lorna Suarez", "Mariela Rodriguez" }));
 
         medicosBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juan Perez", "Luis Gutierrez", "Eduardo Gonzalez", "Guadalupe Torres", "Maria Castillo" }));
@@ -359,8 +356,6 @@ public class resumenGuardias extends javax.swing.JFrame {
             }
         });
 
-        cancelarBtn.setText("Cancelar");
-
         regresarBtn.setText("Regresar");
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,7 +374,6 @@ public class resumenGuardias extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(CBMeses, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editarBtn)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -387,13 +381,11 @@ public class resumenGuardias extends javax.swing.JFrame {
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(medicosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel5)
-                                                    .addComponent(actualizarBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                    .addComponent(jLabel5))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel6)
-                                                    .addComponent(enfermerasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cancelarBtn)))
+                                                    .addComponent(enfermerasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -461,6 +453,10 @@ public class resumenGuardias extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(regresarBtn)
                         .addGap(49, 49, 49))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(actualizarBtn)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,9 +529,7 @@ public class resumenGuardias extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(46, 46, 46)
-                .addComponent(editarBtn)
-                .addGap(32, 32, 32)
+                .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
@@ -543,11 +537,9 @@ public class resumenGuardias extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enfermerasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(medicosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualizarBtn)
-                    .addComponent(cancelarBtn))
-                .addGap(73, 73, 73))
+                .addGap(50, 50, 50)
+                .addComponent(actualizarBtn)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -706,16 +698,22 @@ public class resumenGuardias extends javax.swing.JFrame {
     private void actualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBtnActionPerformed
         String dia = fechaLbl.getText();
         
-        if (dia.length()==12 || dia.length()==13) {
-            dia = fechaLbl.getText().substring(0,1);
+        if (!(fechaLbl.getText().equals(""))) {
+        
+            if (dia.length()==12 || dia.length()==13) {
+                dia = fechaLbl.getText().substring(0,1);
+            } else {
+                dia = fechaLbl.getText().substring(0,2);
+            }
+
+            calculos.editarTurno(matrizGuardiaM, matrizGuardiaE, listaGuardiaM, listaGuardiaE, medicosBtn.getSelectedIndex(), enfermerasBtn.getSelectedIndex(), (Integer.parseInt(dia)-1), CBMeses.getSelectedIndex());
+            calculos.mostrarTurnos(jTextArea1, jTextArea2, CBMeses.getSelectedIndex(), (Integer.parseInt(dia)-1), matrizGuardiaM, matrizGuardiaE, fechaLbl);
+        
         } else {
-            dia = fechaLbl.getText().substring(0,2);
+            
+            JOptionPane.showMessageDialog(this, "No hay ninguna fecha seleccionada");
+            
         }
-        
-        System.out.println(dia);
-        
-        calculos.editarTurno(matrizGuardiaM, matrizGuardiaE, listaGuardiaM, listaGuardiaE, medicosBtn.getSelectedIndex(), enfermerasBtn.getSelectedIndex(), (Integer.parseInt(dia)-1), CBMeses.getSelectedIndex());
-        calculos.mostrarTurnos(jTextArea1, jTextArea2, CBMeses.getSelectedIndex(), (Integer.parseInt(dia)-1), matrizGuardiaM, matrizGuardiaE, fechaLbl);
     }//GEN-LAST:event_actualizarBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
@@ -768,8 +766,6 @@ public class resumenGuardias extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBMeses;
     private javax.swing.JButton actualizarBtn;
-    private javax.swing.JButton cancelarBtn;
-    private javax.swing.JButton editarBtn;
     private javax.swing.JComboBox<String> enfermerasBtn;
     private javax.swing.JLabel fechaLbl;
     private javax.swing.JButton jButton1;

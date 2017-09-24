@@ -104,13 +104,14 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         calculos.asignarTurnos(matrizPantallaM, matrizPantallaE, listaPantallaM, listaPantallaE);
         JOptionPane.showMessageDialog(this, "Turnos generados con exito!");
         verTurnosBtn.setVisible(true);
-        conDatosBtn.setVisible(true);
+        conDatosBtn.setVisible(true);           
+        AsignarTurnosBtn.setEnabled(false);
     }//GEN-LAST:event_AsignarTurnosBtnActionPerformed
 
     private void verTurnosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTurnosBtnActionPerformed
         this.setVisible(false);
         resumenGuardias pantalla = new resumenGuardias();
-        pantalla.setVisible(true);
+        pantalla.setVisible(true);        
     }//GEN-LAST:event_verTurnosBtnActionPerformed
 
     private void conDatosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conDatosBtnActionPerformed
@@ -153,6 +154,13 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             listaPantallaE.add(enfermera5);
             
             variableControl = false;
+            
+            verTurnosBtn.setVisible(false);
+            conDatosBtn.setVisible(false);
+            
+        } else {
+            
+            AsignarTurnosBtn.setEnabled(false);
         }
         
         pantallaResumen.listaGuardiaM = listaPantallaM;
@@ -160,8 +168,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         pantallaResumen.matrizGuardiaM = matrizPantallaM;
         pantallaResumen.matrizGuardiaE = matrizPantallaE;
         pantallaResumen.controlGuardia = variableControl;
-        verTurnosBtn.setVisible(false);
-        conDatosBtn.setVisible(false);
+        
     }//GEN-LAST:event_formWindowOpened
 
     /**
