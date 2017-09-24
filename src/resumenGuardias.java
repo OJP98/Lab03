@@ -447,7 +447,7 @@ public class resumenGuardias extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(41, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -456,7 +456,7 @@ public class resumenGuardias extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(197, 197, 197)
                 .addComponent(actualizarBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 739, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -676,6 +676,8 @@ public class resumenGuardias extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void CBMesesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBMesesActionPerformed
+        //Se cancelan las casillas que no se usaran, por ejemplo, febrero 29 - 31.
+        
         String valor = (String) CBMeses.getSelectedItem();
         
         if (valor.equals("Febrero")) {

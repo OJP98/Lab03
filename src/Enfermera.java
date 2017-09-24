@@ -74,10 +74,10 @@ public class Enfermera extends Trabajador{
     
     /**
      * Devuelve los datos basicos de una enfermera, su nombre, dpi, nit, salario, y si es intensivista la enfermera o no
-     * @param matriz
-     * @param mes
-     * @param dia
-     * @return 
+     * @param matriz: matriz de enfermeras
+     * @param mes: el numero de la columna
+     * @param dia: el numero de fila
+     * @return: cadena de texto con los datos de la enfermera
      */
     public String imprimirDatosE(Enfermera[][] matriz, int mes, int dia){
 
@@ -89,7 +89,7 @@ public class Enfermera extends Trabajador{
             SioNo = "No";
         }
         
-        return super.imprimirDatos(matriz, mes, dia) + "Intensivista: " + SioNo + "\n";
+        return super.imprimirDatos(matriz, mes, dia) + "Intensivista: " + SioNo + "\n" + "Tiempo trabajando: " + matriz[mes][dia].getTiempoTrabajando() + " años";
         
     }
     

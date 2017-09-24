@@ -81,10 +81,18 @@ public class Trabajador {
     
     /**
      * Suma la cantidad de turnos indicados por el usuario a la cantidad actual de turnos
-     * @param i
+     * @param i: cantidad de turnoss
      */
     public void sumaTurnos(int i){
         turnos += i;
+    }
+    
+    /**
+     * Resta la cantidad de turnos indicada por el usuario a la cantidad actual de turnos
+     * @param i: cantidad de turnos
+     */
+    public void restaTurnos(int i){
+        turnos -= i;
     }
     
     /**

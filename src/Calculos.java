@@ -53,17 +53,38 @@ public class Calculos {
                 listaE.get(numeroRandom).sumaTurnos(1);
             }      
         }  
+        
+        
+        //Aqui se cancelan los dias inexistentes del año, como 29 de febrero, 31 de junio, etc...
+        
+        matrizM[1][28]=null;
+        matrizM[1][29]=null;
+        matrizM[1][30]=null;
+        matrizM[3][30]=null;
+        matrizM[5][30]=null;
+        matrizM[8][30]=null;
+        matrizM[10][30]=null;
+        
+        matrizE[1][28]=null;
+        matrizE[1][29]=null;
+        matrizE[1][30]=null;
+        matrizE[3][30]=null;
+        matrizE[5][30]=null;
+        matrizE[8][30]=null;
+        matrizE[10][30]=null;
+        
+        
     }
     
     /**
      * Muestra los datos del medico y enfermera asignados a un turno en especifico, seleccionado por el usuario.
-     * @param texto1
-     * @param texto2
-     * @param mes
-     * @param dia
-     * @param matrizM
-     * @param matrizE
-     * @param fecha
+     * @param texto1: El espacio en donde se va a imprimir el texto
+     * @param texto2: Segundo espacio "".
+     * @param mes: El numero de columna de la matriz
+     * @param dia: El numero de fila de la matriz
+     * @param matrizM: Matriz de medicos
+     * @param matrizE: Matriz de enfermeras
+     * @param fecha: Fecha que se muestra en el programa
      */
     public void mostrarTurnos(JTextArea texto1, JTextArea texto2, int mes, int dia, Medico[][] matrizM, Enfermera[][] matrizE, JLabel fecha){
         
@@ -80,14 +101,14 @@ public class Calculos {
     
     /**
      * Si el usuario desea cambiar al medico o enfermera de un turno, este metodo le permite cambiar uno o ambos trabajadores en un turno especifico
-     * @param matrizM
-     * @param matrizE
-     * @param listaM
-     * @param listaE
-     * @param M
-     * @param E
-     * @param dia
-     * @param mes
+     * @param matrizM: Matriz de medicos
+     * @param matrizE: Matriz de enfermeras
+     * @param listaM: lista de medicos
+     * @param listaE: lista de enfermeras
+     * @param M: Espacio ingresado por el usuario
+     * @param E: Espacio ingresado por el usuario
+     * @param dia: numero de fila
+     * @param mes: numero de columna.
      */
     public void editarTurno(Medico[][] matrizM, Enfermera[][] matrizE, ArrayList<Medico> listaM, ArrayList<Enfermera> listaE, int M, int E, int dia, int mes){
         
@@ -95,7 +116,14 @@ public class Calculos {
         if(matrizE[mes][dia].isIntensivista() == true && listaE.get(E).isIntensivista() == false){
            JOptionPane.showMessageDialog(null, "La enfermera sustituta debe de ser intensivista", "Error", JOptionPane.INFORMATION_MESSAGE);
         }else{
+            
+            matrizE[mes][dia].restaTurnos(1);
+            matrizM[mes][dia].restaTurnos(1);
+            
             matrizE[mes][dia] = listaE.get(E); 
+            
+            matrizM[mes][dia].sumaTurnos(1);
+            matrizE[mes][dia].sumaTurnos(1);
         }
        
                 
@@ -103,9 +131,9 @@ public class Calculos {
     
     /**
      * Este metodo obtiene la cantidad de turnos de la enfemera intensivista que ha trabajado mas turnos
-     * @param matrizE
-     * @param listaE
-     * @return valorM
+     * @param matrizE: Matriz de enfermeras
+     * @param listaE: Lista de las enfermeras
+     * @return valorM: La posicion de la enfermera con mas turnos realizados
      */
     public int intensivistaMasTurnos(Enfermera[][] matrizE, ArrayList<Enfermera> listaE){
         
@@ -126,9 +154,9 @@ public class Calculos {
     
     /**
      * Este metodo obtiene el nombre de la enfermera intensivista que ha trabajado mas turnos
-     * @param listaE
-     * @param valorM
-     * @return nombre
+     * @param listaE: lista de enfermeras
+     * @param valorM: posicion de la lista
+     * @return nombre: El nombre de la enfermera
      */
     public String nombreIntensivista(ArrayList<Enfermera> listaE, int valorM){
         
@@ -145,9 +173,9 @@ public class Calculos {
     
     /**
      * Este metodo obtiene el salario base de la enfermera intensivista que ha trabajado mas turnos
-     * @param listaE
-     * @param valorM
-     * @return salario
+     * @param listaE: Lista de enfermeras
+     * @param valorM: La posicion de la enfermera con mas turnos
+     * @return salario: El salario de dicha enfermera
      */
     public double SalarioIntensivista(ArrayList<Enfermera> listaE, int valorM){
         double salario = 0;
@@ -163,9 +191,9 @@ public class Calculos {
     
     /**
      * Este metodo obtiene el salario anual de la enfermera intensivista que ha trabajado mas turnos
-     * @param turnos
-     * @param salario
-     * @return salarioT
+     * @param turnos: Los turnos trabajados por una enfermera
+     * @param salario: Salario de la enfermera
+     * @return salarioT: EL salario total, incluyendo extras.
      */
     public double SalarioExtraIntensivista(int turnos, double salario){
        int bono = turnos-5;
@@ -186,9 +214,9 @@ public class Calculos {
     
     /**
      * Calcula cuanto es el total a pagar por turnos trabajados de mas de todos los trabajadores
-     * @param listM
-     * @param listE
-     * @return devengado
+     * @param listM: Lista de medicos
+     * @param listE: Lista de enfermeras
+     * @return devengado: El total de todos los trabajadores
      */
     public double devengado(ArrayList<Medico> listM, ArrayList<Enfermera> listE){
         double devengado = 0;
@@ -206,11 +234,11 @@ public class Calculos {
     
     /**
      * Cuenta cuantas veces encuentra una pareja de medico/enfermera especificada por el usuario
-     * @param matrizM
-     * @param matrizE
-     * @param especialista
-     * @param intensivista
-     * @return contador
+     * @param matrizM: Matriz de medicos
+     * @param matrizE: Matriz de enfermeras
+     * @param especialista: el nombre del especialista
+     * @param intensivista: El nombre de la intensivista
+     * @return contador: el numero de veces que han trabajado juntos
      */
     public int contarVeces(Medico[][] matrizM, Enfermera[][] matrizE, String especialista, String intensivista) {
         
@@ -221,22 +249,29 @@ public class Calculos {
         for (int i = 0; i < matrizM.length; i++) {
             for (int j = 0; j < matrizM[0].length; j++) {
                 
-                nombre1 = matrizM[i][j].getNombre();
-                nombre2 = matrizE[i][j].getNombre();
-                
-                if( (nombre1.equals(especialista)) && (nombre2.equals(intensivista)) ) {
-                    contador++;
-                }                
+                if(!(i==1 && j==28) && !(i==1 && j==29) && !(i==1 && j==30) && !(i==3 && j==30) &&  !(i==5 && j==30) && !(i==8 && j==30) && !(i==10 && j==30)){
+                    
+                    nombre1 = matrizM[i][j].getNombre();
+                    nombre2 = matrizE[i][j].getNombre();
+
+                    if( (nombre1.equals(especialista)) && (nombre2.equals(intensivista)) ) {
+                        contador++;
+                    }   
+                }
             }
         }
+        
+    return contador;
+           
+    }
 
-        return contador;
+     
         
     }
     
     
     
-}
+
     
  
    

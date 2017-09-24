@@ -81,7 +81,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                         .addComponent(AsignarTurnosBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(verTurnosBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(conDatosBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,9 +116,15 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
     private void conDatosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conDatosBtnActionPerformed
         // TODO add your handling code here:
+        
         this.setVisible(false);
-        informacionTrabajadores trabajadoress = new informacionTrabajadores(matrizPantallaM, matrizPantallaE, listaPantallaM, listaPantallaE);
-        trabajadoress.setVisible(true);
+        //informacionTrabajadores trabajadores = new informacionTrabajadores(matrizPantallaM, matrizPantallaE, listaPantallaM, listaPantallaE);
+        informacionTrabajadores trabajadores = new informacionTrabajadores();
+        trabajadores.setVisible(true);
+        trabajadores.matrizMe = matrizPantallaM;
+        trabajadores.matrizEn = matrizPantallaE;
+        trabajadores.listaGuardiaM = listaPantallaM;
+        trabajadores.listaGuardiaE = listaPantallaE;
         
     }//GEN-LAST:event_conDatosBtnActionPerformed
     

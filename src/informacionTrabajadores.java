@@ -28,10 +28,10 @@ public class informacionTrabajadores extends javax.swing.JFrame {
     
     /**
      * Constructor con parametros indicados, basicamente pasa la lista de trabajadores con sus turnos
-     * @param matrizM
-     * @param matrizE
-     * @param lgM
-     * @param lgE
+     * @param matrizM: matriz de los medicos
+     * @param matrizE: matriz de las enfermeras
+     * @param lgM: Lista de los medicos
+     * @param lgE: lista de las enfermeras
      */
     public informacionTrabajadores(Medico[][] matrizM, Enfermera[][] matrizE, ArrayList<Medico> lgM, ArrayList<Enfermera> lgE){ 
         initComponents();

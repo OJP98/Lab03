@@ -52,6 +52,7 @@ public class Medico extends Trabajador{
         return colegiado;
     }
     
+    
     /**
      * Calcula el trabajo de un medico a partir de su salario base y los turnos que realizo
      * @param salario
@@ -77,10 +78,10 @@ public class Medico extends Trabajador{
     
     /**
      * Devuelve una cadena de texto con la informacion basica del medico, su nombre, dpi, nit, salario base y si es especialista o no
-     * @param matriz
-     * @param mes
-     * @param dia
-     * @return
+     * @param matriz: matriz de medicos
+     * @param mes: posicion de la columna
+     * @param dia: posicion de la fila
+     * @return: cadena de texto con los datos del medico
      */
     public String imprimirDatosM(Medico[][] matriz, int mes, int dia){
         
