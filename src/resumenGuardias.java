@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
  * @Author: Oscar Juarez y Rodrigo Zea
  * @Version: 22.09.17
  * Programacion Orientada a objetos
- * Descripcion: 
+ * Descripcion: Despliega como estan distribuidos los turnos en cada mes y dia
  */
 public class resumenGuardias extends javax.swing.JFrame {
 
@@ -700,9 +700,12 @@ public class resumenGuardias extends javax.swing.JFrame {
         
         if (!(fechaLbl.getText().equals(""))) {
         
-            if (dia.length()==12 || dia.length()==13) {
+            if (dia.length()==12 || ( (dia.length()==13) && (CBMeses.getSelectedIndex() >9) )) {
                 dia = fechaLbl.getText().substring(0,1);
-            } else {
+            }else if( ((dia.length()==13) && (CBMeses.getSelectedIndex()<9) ) || (dia.length()==14)){
+                dia = fechaLbl.getText().substring(0,2);
+            }
+            else {
                 dia = fechaLbl.getText().substring(0,2);
             }
 

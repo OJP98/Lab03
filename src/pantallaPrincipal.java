@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
  * @Author: Oscar Juarez y Rodrigo Zea
  * @Version: 22.09.17
  * Programacion Orientada a objetos
- * Descripcion: 
+ * Descripcion: Pantalla principal del programa, le despliega el menu al usuario
  *
 */
 public class pantallaPrincipal extends javax.swing.JFrame {
@@ -121,7 +121,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         trabajadoress.setVisible(true);
         
     }//GEN-LAST:event_conDatosBtnActionPerformed
-
+    
+    //Cuando se abre el programa se crea la lista de usuarios
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
            
         if (variableControl) {

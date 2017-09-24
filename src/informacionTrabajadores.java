@@ -1,15 +1,12 @@
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- *
- * @author MIGUEL
+ * @Author: Oscar Juarez y Rodrigo Zea
+ * @Version: 22.09.17
+ * Programacion Orientada a objetos
+ * Descripcion: Clase o form encargada de desplegar el resumen de datos que el usuario especifico en el resumen del programa
  */
 public class informacionTrabajadores extends javax.swing.JFrame {
     public static boolean controlT;
@@ -18,9 +15,9 @@ public class informacionTrabajadores extends javax.swing.JFrame {
     public static ArrayList<Medico> listaGuardiaM = new ArrayList<Medico>();
     public static ArrayList<Enfermera> listaGuardiaE = new ArrayList<Enfermera>();
     Calculos calc = new Calculos();
-    String nombreIM;
-    int turnosIM;
-    double salarioIM, totalIM, adicional;
+    private String nombreIM;
+    private int turnosIM;
+    private double salarioIM, totalIM, adicional;
     
     /**
      * Creates new form informacionTrabajadores
@@ -29,6 +26,13 @@ public class informacionTrabajadores extends javax.swing.JFrame {
         initComponents();
     }
     
+    /**
+     * Constructor con parametros indicados, basicamente pasa la lista de trabajadores con sus turnos
+     * @param matrizM
+     * @param matrizE
+     * @param lgM
+     * @param lgE
+     */
     public informacionTrabajadores(Medico[][] matrizM, Enfermera[][] matrizE, ArrayList<Medico> lgM, ArrayList<Enfermera> lgE){ 
         initComponents();
         matrizMe = matrizM;
@@ -255,6 +259,9 @@ public class informacionTrabajadores extends javax.swing.JFrame {
         pantalla.variableControl = controlT;
     }//GEN-LAST:event_jButton2ActionPerformed
     
+    /**
+     * Calcula y despliega los datos requeridos por desplegar de la enfermera intensivista que mas turnos trabajo
+     */
     public void calculoIntensivista(){
         
         turnosIM = calc.intensivistaMasTurnos(matrizEn, listaGuardiaE);
@@ -268,6 +275,9 @@ public class informacionTrabajadores extends javax.swing.JFrame {
                
     }
     
+    /**
+     * Calcula y despliega el total a pagar por turnos extras de los trabajadores
+     */
     public void adicional(){
         adicional = calc.devengado(listaGuardiaM, listaGuardiaE);
         adicionalLbl.setText("Q"+adicional+"");

@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
  * @Author: Oscar Juarez y Rodrigo Zea
  * @Version: 22.09.17
  * Programacion Orientada a objetos
- * Descripcion: 
+ * Descripcion: Clase encargada de realizar todos los calculos que lleven logica del programa.
  */
 
 public class Calculos {
@@ -23,9 +23,12 @@ public class Calculos {
     public static ArrayList<Medico> listaCalculosM = new ArrayList<Medico>();
     public static ArrayList<Enfermera> listaCalculosE = new ArrayList<Enfermera>();
     
-    
     /**
-     * Metodo que asigna todos los turnos del persona de Guardia
+     * Asigna los turnos de forma aleatoria al "calendario" de meses y dias.
+     * @param matrizM
+     * @param matrizE
+     * @param listaM
+     * @param listaE
      */
     public void asignarTurnos(Medico[][] matrizM, Enfermera[][] matrizE, ArrayList<Medico> listaM, ArrayList<Enfermera> listaE){
         
@@ -52,6 +55,16 @@ public class Calculos {
         }  
     }
     
+    /**
+     * Muestra los datos del medico y enfermera asignados a un turno en especifico, seleccionado por el usuario.
+     * @param texto1
+     * @param texto2
+     * @param mes
+     * @param dia
+     * @param matrizM
+     * @param matrizE
+     * @param fecha
+     */
     public void mostrarTurnos(JTextArea texto1, JTextArea texto2, int mes, int dia, Medico[][] matrizM, Enfermera[][] matrizE, JLabel fecha){
         
         int Mes = mes+1;
@@ -65,6 +78,17 @@ public class Calculos {
         
     }
     
+    /**
+     * Si el usuario desea cambiar al medico o enfermera de un turno, este metodo le permite cambiar uno o ambos trabajadores en un turno especifico
+     * @param matrizM
+     * @param matrizE
+     * @param listaM
+     * @param listaE
+     * @param M
+     * @param E
+     * @param dia
+     * @param mes
+     */
     public void editarTurno(Medico[][] matrizM, Enfermera[][] matrizE, ArrayList<Medico> listaM, ArrayList<Enfermera> listaE, int M, int E, int dia, int mes){
         
         matrizM[mes][dia] = listaM.get(M);
@@ -77,29 +101,15 @@ public class Calculos {
                 
     }
     
+    /**
+     * Este metodo obtiene la cantidad de turnos de la enfemera intensivista que ha trabajado mas turnos
+     * @param matrizE
+     * @param listaE
+     * @return valorM
+     */
     public int intensivistaMasTurnos(Enfermera[][] matrizE, ArrayList<Enfermera> listaE){
         
         ArrayList<Integer> turnosE = new ArrayList<Integer>();
-                        
-        /*for (int i = 0; i < listaE.size(); i++) {
-                
-            if((listaE.get(i).isIntensivista()==true) && (turnosE[0]==0)){
-                
-                    turnosE[0] = listaE.get(i).getTurnos();
-                                  
-            } else  {                
-                turnosE[1] = listaE.get(i).getTurnos();
-            }
-            
-        }
-        
-        Arrays.sort(turnosE);
-        int valorM = turnosE[1];
-        
-        for (int i = 0; i < turnosE.length; i++) {
-            System.out.println(turnosE[i]);
-        }*/
-        
         
         int valorM = 0;
         
@@ -114,6 +124,12 @@ public class Calculos {
         return valorM;
     }
     
+    /**
+     * Este metodo obtiene el nombre de la enfermera intensivista que ha trabajado mas turnos
+     * @param listaE
+     * @param valorM
+     * @return nombre
+     */
     public String nombreIntensivista(ArrayList<Enfermera> listaE, int valorM){
         
         String nombre="";
@@ -127,6 +143,12 @@ public class Calculos {
         return nombre;
     }
     
+    /**
+     * Este metodo obtiene el salario base de la enfermera intensivista que ha trabajado mas turnos
+     * @param listaE
+     * @param valorM
+     * @return salario
+     */
     public double SalarioIntensivista(ArrayList<Enfermera> listaE, int valorM){
         double salario = 0;
         
@@ -139,6 +161,12 @@ public class Calculos {
         return salario;
     }
     
+    /**
+     * Este metodo obtiene el salario anual de la enfermera intensivista que ha trabajado mas turnos
+     * @param turnos
+     * @param salario
+     * @return salarioT
+     */
     public double SalarioExtraIntensivista(int turnos, double salario){
        int bono = turnos-5;
        double salarioT = 0;
@@ -156,6 +184,12 @@ public class Calculos {
         return salarioT;
     }
     
+    /**
+     * Calcula cuanto es el total a pagar por turnos trabajados de mas de todos los trabajadores
+     * @param listM
+     * @param listE
+     * @return devengado
+     */
     public double devengado(ArrayList<Medico> listM, ArrayList<Enfermera> listE){
         double devengado = 0;
         double salarioM = 0, salarioE = 0;
@@ -170,6 +204,14 @@ public class Calculos {
         return devengado;
     }
     
+    /**
+     * Cuenta cuantas veces encuentra una pareja de medico/enfermera especificada por el usuario
+     * @param matrizM
+     * @param matrizE
+     * @param especialista
+     * @param intensivista
+     * @return contador
+     */
     public int contarVeces(Medico[][] matrizM, Enfermera[][] matrizE, String especialista, String intensivista) {
         
         String nombre1;
@@ -196,32 +238,7 @@ public class Calculos {
     
 }
     
-    /*
-    public String imprimirDatos(Trabajador[][] matriz, int mes, int dia){
-        
-        String nombre, DPI, NIT, colegiado, cadena = "";
-        double salario;
-        int tiempoTrabajando;
-        boolean especialista, intensivista;
-        
-        nombre = matriz[mes][dia].getNombre();
-        DPI = matriz[mes][dia].getDPI();
-        NIT = matriz[mes][dia].getNIT();
-        salario = matriz[mes][dia].getSalario();
-        
-        if (matriz[mes][dia] instanceof Medico) {
-            
-            colegiado = matriz[mes][dia].getColegiado;
-            
-            if (especialista==true){
-                
-            }
-            
-        }
-        
-        return nombre;
-    }
-        */
+ 
    
 
 
