@@ -33,17 +33,20 @@ public class Medico extends Trabajador{
     
     
     @Override
-    public void calcularSalario(double salario, int turnos){
+    public double calcularSalario(double salario, int turnos){
         
         int bono = turnos-2;
+        double salarioT = 0;
         
         if (turnos>=3) {            
             
-            salario = this.salario + (900*bono);            
+            salarioT = this.salario + (900*bono);            
             
         } else {
-            salario += this.salario;
+            salarioT = this.salario;
         }        
+        
+        return salarioT;
     }
     
     public String imprimirDatosM(Medico[][] matriz, int mes, int dia){

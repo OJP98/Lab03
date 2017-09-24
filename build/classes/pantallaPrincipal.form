@@ -33,7 +33,7 @@
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="AsignarTurnosBtn" alignment="0" max="32767" attributes="0"/>
                       <Component id="verTurnosBtn" alignment="0" max="32767" attributes="0"/>
-                      <Component id="verTurnosBtn1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="conDatosBtn" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="66" max="32767" attributes="0"/>
@@ -50,7 +50,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="verTurnosBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="verTurnosBtn1" min="-2" max="-2" attributes="0"/>
+              <Component id="conDatosBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -81,12 +81,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verTurnosBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="verTurnosBtn1">
+    <Component class="javax.swing.JButton" name="conDatosBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar datos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verTurnosBtn1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conDatosBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

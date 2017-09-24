@@ -48,8 +48,14 @@ public class Trabajador {
         return turnos;
     }
     
-    public void calcularSalario(double salario, int turnos){        
-        this.salario += salario;        
+    public void sumaTurnos(int i){
+        turnos += i;
+    }
+    
+    public double calcularSalario(double salario, int turnos){        
+        this.salario += salario;    
+        
+        return salario;
     }
     
     public String imprimirDatos(Trabajador[][] matriz, int mes, int dia) {

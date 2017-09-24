@@ -36,7 +36,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         AsignarTurnosBtn = new javax.swing.JButton();
         verTurnosBtn = new javax.swing.JButton();
-        verTurnosBtn1 = new javax.swing.JButton();
+        conDatosBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,10 +62,10 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        verTurnosBtn1.setText("Consultar datos");
-        verTurnosBtn1.addActionListener(new java.awt.event.ActionListener() {
+        conDatosBtn.setText("Consultar datos");
+        conDatosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verTurnosBtn1ActionPerformed(evt);
+                conDatosBtnActionPerformed(evt);
             }
         });
 
@@ -80,7 +80,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(AsignarTurnosBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(verTurnosBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(verTurnosBtn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(conDatosBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,7 +93,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(verTurnosBtn)
                 .addGap(18, 18, 18)
-                .addComponent(verTurnosBtn1)
+                .addComponent(conDatosBtn)
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
@@ -103,6 +103,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private void AsignarTurnosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarTurnosBtnActionPerformed
         calculos.asignarTurnos(matrizPantallaM, matrizPantallaE, listaPantallaM, listaPantallaE);
         JOptionPane.showMessageDialog(this, "Turnos generados con exito!");
+        verTurnosBtn.setVisible(true);
+        conDatosBtn.setVisible(true);
     }//GEN-LAST:event_AsignarTurnosBtnActionPerformed
 
     private void verTurnosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTurnosBtnActionPerformed
@@ -111,9 +113,13 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         pantalla.setVisible(true);
     }//GEN-LAST:event_verTurnosBtnActionPerformed
 
-    private void verTurnosBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTurnosBtn1ActionPerformed
+    private void conDatosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conDatosBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_verTurnosBtn1ActionPerformed
+        this.setVisible(false);
+        informacionTrabajadores trabajadoress = new informacionTrabajadores(matrizPantallaM, matrizPantallaE, listaPantallaM, listaPantallaE);
+        trabajadoress.setVisible(true);
+        
+    }//GEN-LAST:event_conDatosBtnActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
            
@@ -154,6 +160,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         pantallaResumen.matrizGuardiaM = matrizPantallaM;
         pantallaResumen.matrizGuardiaE = matrizPantallaE;
         pantallaResumen.controlGuardia = variableControl;
+        verTurnosBtn.setVisible(false);
+        conDatosBtn.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -193,8 +201,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AsignarTurnosBtn;
+    private javax.swing.JButton conDatosBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton verTurnosBtn;
-    private javax.swing.JButton verTurnosBtn1;
     // End of variables declaration//GEN-END:variables
 }

@@ -679,7 +679,8 @@ public class resumenGuardias extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+    jTextArea1.setLineWrap(true);
+    jTextArea2.setLineWrap(true);
     }//GEN-LAST:event_formWindowOpened
 
     private void CBMesesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBMesesActionPerformed
@@ -695,7 +696,7 @@ public class resumenGuardias extends javax.swing.JFrame {
            jButton31.setEnabled(true); 
         }
         
-        if (valor.equals("Abril") || valor.equals("Junio") || valor.equals("Septiembre") || valor.equals("Noviembre")) {
+        if (valor.equals("Abril") || valor.equals("Junio") || valor.equals("Septiembre") || valor.equals("Noviembre") || valor.equals("Febrero")) {
             jButton31.setEnabled(false);            
         } else {
             jButton31.setEnabled(true);
@@ -705,7 +706,7 @@ public class resumenGuardias extends javax.swing.JFrame {
     private void actualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBtnActionPerformed
         String dia = fechaLbl.getText();
         
-        if (dia.length()==12) {
+        if (dia.length()==12 || dia.length()==13) {
             dia = fechaLbl.getText().substring(0,1);
         } else {
             dia = fechaLbl.getText().substring(0,2);

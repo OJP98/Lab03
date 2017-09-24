@@ -5,7 +5,7 @@
  * Descripcion: 
  */
 
-public class Enfermera extends Trabajador {
+public class Enfermera extends Trabajador{
     
     private boolean intensivista;
     private int tiempoTrabajando;
@@ -28,20 +28,22 @@ public class Enfermera extends Trabajador {
     
     
     @Override
-    public void calcularSalario(double salario, int turnos){
+    public double calcularSalario(double salario, int turnos){
         
-        int bono = turnos-4;
+        int bono = turnos-5;
+        double salarioT=0;
         
         if (turnos>=5) {
             
-            salario = salario + (500*bono); 
+            salarioT = salario + (500*bono); 
             
         } else {
             
-            salario += this.salario;
+            salarioT += this.salario;
             
         }
         
+        return salarioT;
     }
     
     public String imprimirDatosE(Enfermera[][] matriz, int mes, int dia){
